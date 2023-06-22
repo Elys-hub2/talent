@@ -29,6 +29,17 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <!-- Select one role -->
+            <div class="mt-4">
+                <x-jet-label for="role_id" value="_{{('Register as:')}}"/>
+                <select name="role_id" class="border-gray-100 focus:border-indigo-200
+                focus:ring-indigo-100 focus:ring-opacity-50 rounded-md shadow-sm">
+                <option value="employe">🇧🇯 Employe</option>
+                <option value="stagiaire">🇧🇯 Stagiaire</option>
+                <option value="admin">🇧🇯 Admin</option>
+                </select>
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">

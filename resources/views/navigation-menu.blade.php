@@ -11,9 +11,12 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex bg-gray-900 text-white rounded-md text-sm font-medium">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Tableau de bord') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('email') }}" >
+                        {{ __('Contact') }}
                     </x-jet-nav-link>
                 </div>
             </div>

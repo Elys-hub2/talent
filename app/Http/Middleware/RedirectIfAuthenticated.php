@@ -23,7 +23,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                //return redirect(RouteServiceProvider::HOME);
+                if ($request->user()->hasRole('employe')) {
+                    return redirect('/appem-layout');
+                }elseif ($request->user()->hasRole('stagiaire')) {
+                    return redirect('/demandeinscription');
+                }elseif ($request->user()->hasRole('admin')) {
+                    return redirect('/dashboard');
+                }
             }
         }
 

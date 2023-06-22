@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('order');
+        return view('email.order');
     }
 
     /**
@@ -37,7 +37,12 @@ class OrderController extends Controller
      */
     public function store(StoreorderRequest $request)
     {
-        //
+        $this->validate($request, [
+            'nom' => 'bail|required|nom',
+            'email' => 'bail|required|email',
+            'message' => 'bail|required|max:500'
+            ]);
+        dd(\App\Models\order::create ($request->all()));
     }
 
     /**
@@ -48,7 +53,7 @@ class OrderController extends Controller
      */
     public function show(order $order)
     {
-        //
+        return view('email.viewmail', compact('order'));
     }
 
     /**

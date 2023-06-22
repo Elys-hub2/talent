@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id_order');
             $table->string('nom');
             $table->string('email');
             $table->text('message')->nullable();

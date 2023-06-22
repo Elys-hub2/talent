@@ -3,8 +3,12 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\Role;
+use App\Actions\Fortify\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
@@ -16,7 +20,10 @@ class CreateNewUser implements CreatesNewUsers
      * Validate and create a newly registered user.
      *
      * @param  array  $input
+     * @param \Illuminate\Http\Request  $request
+     * @return  \Illuminate\Http\RedirectResponse
      * @return \App\Models\User
+     * @return \App\Models\Role
      */
     public function create(array $input)
     {
@@ -32,5 +39,13 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        return User::roleAttached([
+            'role_id' => $input['role_id'],
+        ]);
+
     }
+    //public function store(Request $request)
+    //{
+      //  $user->attachRole($request->role_id);
+    //}
 }
